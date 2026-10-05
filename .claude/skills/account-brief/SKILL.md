@@ -72,7 +72,10 @@ Fill `templates/brief.md`. Rules:
 
 1. Write the brief to `briefs/<company-slug>-<YYYY-MM-DD>.md`.
 2. In chat, show the **TL;DR**, the **fit score**, the **top 3 discovery questions**, and the **next best action**, then the file path. Don't paste the whole brief into chat.
-3. Offer: a deep dive on any section, an outreach email for a persona, or a refresh on the day of the meeting.
+3. **PDF / internal pre-meeting prep (when asked):** write `briefs/<slug>-<date>-internal-prep.md` (one page: the account in 60 seconds, decisions needed with a recommendation for each, a who-does-what table with blank owners, unknowns and how to find them, risks with counters, a proposed customer-meeting agenda, and asks of the team). Then render:
+   `python3 -m hixbrain.render_pdf briefs/<slug>-<date>-internal-prep.md briefs/<slug>-<date>.md --out briefs/<slug>-<date>-internal-prep.pdf --title "<Company> · Internal Pre-Meeting Prep · <date>" --internal`
+   (`pip install markdown` if needed.) Rasterize a page or two with `pdftoppm` to check the layout, then send the PDF to the user.
+4. Offer: a deep dive on any section, an outreach email for a persona, or a refresh on the day of the meeting.
 
 ## Guardrails
 

@@ -1,6 +1,6 @@
 # {Company} — Voice AI Account Brief
 
-*Generated {date} · Depth: {quick|deep} · Fit score: **{NN}/100 ({band})***
+Generated {date} · Depth: {quick|deep} · Fit score: **{NN}/100 ({band})**
 
 > Legend: plain text = sourced fact [n] · *🧠 Hypothesis:* = inference, verify on the call · **Unknown** = not found; see discovery questions
 
