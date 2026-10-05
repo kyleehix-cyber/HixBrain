@@ -86,7 +86,8 @@ Fill `templates/brief.md`. Rules:
 4. **PDF / internal pre-meeting prep (when asked):** write `briefs/<slug>-<date>-internal-prep.md` (one page: the account in 60 seconds, decisions needed with a recommendation for each, a who-does-what table with blank owners, unknowns and how to find them, risks with counters, a proposed customer-meeting agenda, and asks of the team). Then render:
    `python3 -m hixbrain.render_pdf briefs/<slug>-<date>-internal-prep.md briefs/<slug>-<date>.md --out briefs/<slug>-<date>-internal-prep.pdf --title "<Company> · Internal Pre-Meeting Prep · <date>" --internal`
    (`pip install markdown` if needed.) Rasterize a page or two with `pdftoppm` to check the layout, then send the PDF to the user.
-5. Offer: a deep dive on any section, an outreach email for a persona, or a refresh on the day of the meeting.
+5. **Discovery deck prompt (when asked):** fill `templates/discovery_deck_prompt.md` from the brief, `seller_profile.yaml`, and the customer's and Deepgram's websites. Follow its customer-facing rules: no internal language, and no criticism of their vendors. Save it to `briefs/<slug>-<date>-discovery-deck-prompt.md`, add it to the account's Drive folder as a Doc uploaded as `text/plain` (so the prompt copies cleanly into Claude Design), and show the user the paste-ready prompt.
+6. Offer: a deep dive on any section, an outreach email for a persona, or a refresh on the day of the meeting.
 
 ## Guardrails
 
