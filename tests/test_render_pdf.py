@@ -36,6 +36,17 @@ class RenderTest(unittest.TestCase):
         self.assertIn("[Hypothesis]", doc)
         self.assertNotIn("🧠", doc)
 
+    def test_count_pages(self):
+        import tempfile, os
+        from hixbrain.render_pdf import count_pages
+        pdf = b"%PDF-1.4\n1 0 obj <</Type /Pages /Kids [2 0 R 3 0 R]>>\n2 0 obj <</Type /Page>>\n3 0 obj <</Type/Page /Parent 1 0 R>>\n"
+        with tempfile.NamedTemporaryFile("wb", suffix=".pdf", delete=False) as f:
+            f.write(pdf)
+        try:
+            self.assertEqual(count_pages(f.name), 2)
+        finally:
+            os.unlink(f.name)
+
     def test_tables_and_internal_banner(self):
         import tempfile, os
         with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:

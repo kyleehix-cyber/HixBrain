@@ -1,107 +1,79 @@
-# {Company} — Voice AI Account Brief
+# {Company} — Deepgram Account Brief
 
-Generated {date} · Depth: {quick|deep} · Fit score: **{NN}/100 ({band})**
+Generated {date} · Depth: {quick|deep} · Fit score: **{NN}/100 ({band})** · Legend: [n] = sourced fact · *🧠* = hypothesis, verify · **Unknown** = not found
 
-> Legend: plain text = sourced fact [n] · *🧠 Hypothesis:* = inference, verify on the call · **Unknown** = not found; see discovery questions
+<!--
+LENGTH BUDGET: the rendered PDF must be 5 pages or fewer (target 4), sources included.
+About 1,500 words before Sources. Max rows/bullets are listed per section.
+One idea per bullet, one line per table cell where possible. Cut adjectives, not facts.
+If a section has nothing sourced, write one line ("Unknown — ask in discovery") and move on.
+-->
 
-## TL;DR (read this in the elevator)
-- **Who they are:** one line, including inbound-volume indicator
-- **Why now:** the strongest trigger [n]
-- **#1 pain hypothesis:** …
-- **Motion:** co-sell via <partner> / direct developer-led / displacement / OEM, plus why
-- **Person to win:** name/title and why
-- **Ask this one question:** …
+## TL;DR
+- **Who:** one line incl. inbound-volume indicator [n]
+- **Why now:** strongest trigger [n]
+- **Pain:** *🧠* #1 pain hypothesis
+- **Motion:** co-sell via <partner> / direct developer-led / displacement / OEM, and why
+- **Win:** person(s) to win and why
+- **Ask:** the one question
 
-## 1. Snapshot
+## 1. Account Snapshot
+<!-- max 6 rows -->
 | | |
 |---|---|
-| Industry / HQ | |
-| Public / private (ticker) | |
-| Revenue / funding | |
-| Employees | |
-| Customers / members served | |
-| Inbound volume indicators | agent headcount, # support lines, 24/7, call-heavy journeys |
+| Company | industry, HQ, public/private (ticker) |
+| Scale | agents, call volume, members/customers [n] |
+| Strategy | leadership quote on CX / cost / AI, with date [n] |
+| Financial signal | budget pressure or growth [n] |
+| Relationship | prior emails / meetings, or "None found" |
 
-## 2. Strategy & Priorities (what leadership is saying)
-Quotes from 10-K, earnings calls, and exec interviews about CX, cost, AI, and digital, with dates [n].
-
-## 3. Financial Health & Budget Signals
-
-## 4. Trigger Events (last ~90 days, plus major ones in the last 12 months)
-| Date | Event | Why it matters for Voice AI |
+## 2. Why Now
+<!-- max 5 rows, newest first -->
+| When | Trigger | So what for Deepgram |
 |---|---|---|
 
-## 5. Contact Center & CX Operations
-- Contact center footprint (locations, in-house vs. BPO, approximate agents)
-- Channels (voice, chat, SMS, app, email) and hours
-- Known pain (hold times, complaints, attrition) [n]
-- Seasonal peaks
+## 3. Contact Center & Stack
+<!-- max 6 rows; Class = Partner / Competitor / Either / Unknown -->
+| Layer | Vendor (evidence) | Class → implication |
+|---|---|---|
+| CCaaS / telephony | | |
+| Speech engine / IVR | | |
+| Conversational AI | | |
+| CRM | | |
 
-## 6. Tech Stack & Incumbents
-| Layer | Vendor | Evidence | Implication |
-|---|---|---|---|
-| CRM | | | integration path |
-| CCaaS / telephony | | | |
-| IVR / conversational AI | | | compete / displace / complement |
-| Speech engine (STT/TTS) | | | Deepgram already? partner? competitor? |
-| BPO | | | |
-| VoC / analytics | | | |
+**Ops & hiring:** one or two lines — footprint, BPO, known pain, hiring signal [n].
 
-## 7. Hiring Signals
-Counts and examples by bucket: frontline agents, CX leadership, contact center ops, conversational AI, CRM platform, AI/data. Explain what each means.
+## 4. Buying Committee
+<!-- max 5 rows. Add a short "Meeting attendees" list only if --attendees was given. -->
+| Person | Background | Likely role |
+|---|---|---|
 
-## 8. Buying Committee
-| Persona | Name | Title | Tenure / background | Likely role (EB / champion / technical / user / blocker) | Source |
-|---|---|---|---|---|---|
-| Chief Experience / Customer Officer | | | | | |
-| CIO | | | | | |
-| CTO | | | | | |
-| Product (digital / CX / conversational) | | | | | |
-| Contact Center leader | | | | | |
-| Engineering / voice tech lead | | | | | |
+## 5. Pain → Deepgram Fit
+<!-- max 5 rows, then a 2-line ROI sketch -->
+| Signal | *🧠* Pain | Deepgram answer + proof |
+|---|---|---|
 
-## 9. People You're Meeting (if attendees are given)
-For each: background, what they've said publicly, the KPIs they own, a suggested opener, and what they'll care about.
+**ROI sketch:** formula inputs (sourced vs. assumed) → conservative and midpoint annual savings.
 
-## 10. Competitive Landscape
-- Their market competitors, and how those competitors use AI in service (peer pressure angle)
-- **Deepgram** competitors present or likely in the account
-- **Deepgram partners** present, and the co-sell contact to bring in
+## 6. Talk Track & Objections
+- **Opener:** two sentences max.
+- **Angles:** one line each for the 2–3 personas that matter here.
+- **Proof:** one or two matching case studies.
 
-## 11. Pain → Solution Map
-| Observed signal | Pain hypothesis (inferred) | Our value prop | Proof point |
-|---|---|---|---|
-
-## 12. ROI Sketch
-Inputs (sourced, or labeled as assumptions) → annual savings range.
-
-## 13. Talk Track
-- **Opener (≤2 sentences):**
-- **Three value angles:** tailored to the persona
-- **Relevant customer story:**
-
-## 14. Discovery Questions (ranked by deal impact)
-1. …
-
-## 15. Likely Objections & Responses
 | Objection | Response |
 |---|---|
+<!-- max 4 rows -->
 
-## 16. Relationship History
-Prior emails, meetings, and notes (Gmail / Calendar / Wispr Flow), or "No prior contact found."
+## 7. Discovery Questions
+<!-- top 5, ranked by deal impact -->
+1.
 
-## 17. Next Best Actions
-1. Who to contact, which channel, and what message
-2. …
+## 8. Next Best Actions
+<!-- max 4, each with who / channel / message -->
+1.
 
-## Fit Score Breakdown
-| Dimension | Score | Why |
-|---|---|---|
-| Inbound volume | /30 | |
-| Pain evidence | /25 | |
-| Timing / triggers | /20 | |
-| Stack compatibility | /15 | |
-| Access | /10 | |
+**Fit score:** Volume NN/30 · Pain NN/25 · Timing NN/20 · Stack NN/15 · Access NN/10 · Competitor adj −N = **NN/100**
 
 ## Sources
-[1] Title — URL (date)
+<!-- one line each: Publisher — short title (date) — [domain](url) -->
+1.

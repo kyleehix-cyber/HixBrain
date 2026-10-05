@@ -66,11 +66,14 @@ Fill `templates/brief.md`. Rules:
 7. **Score fit** using the playbook rubric and show the breakdown.
 8. **ROI sketch:** use the playbook formula. Label each input as sourced or assumed.
 9. Use the persona playbook to tailor the talk track and questions to each persona, and to each attendee if attendees were given.
-10. Be concise. The brief should be skimmable in 5 minutes. Use tables and bullets, not essays.
+10. **Hard length limit: the brief PDF must be 5 pages or fewer, sources included (target 3–4).** Stay within the per-section row and bullet maxima in the template's comments (about 1,500 words before Sources). State each fact once, in the section where it matters most; don't repeat the headline stat in every section. Use one line per table cell where possible. Cut adjectives, not facts or citations. Delete the template's `<!-- -->` comments from the output.
+    - Research depth doesn't change the length limit. In `--deep` mode, go deeper on the facts that matter, not wider.
 
 ## Step 5: Deliver in Claude Code
 
-1. Write the brief to `briefs/<company-slug>-<YYYY-MM-DD>.md`.
+1. Write the brief to `briefs/<company-slug>-<YYYY-MM-DD>.md`, then check its length:
+   `python3 -m hixbrain.render_pdf briefs/<slug>-<date>.md --out briefs/<slug>-<date>.pdf --title "<Company> · Deepgram Account Brief" --max-pages 5`
+   If it exits with `OVER LIMIT`, trim (lowest-value rows first: extra triggers, extra objections, extra committee members) and re-render until it passes. Never shrink the font to make it fit.
 2. In chat, show the **TL;DR**, the **fit score**, the **top 3 discovery questions**, and the **next best action**, then the file path. Don't paste the whole brief into chat.
 3. **Google Drive folder (every brief).** If the Google Drive tools are available, do this automatically. If they aren't, say so in one line and skip it.
    - Folder title: **`<Account Name> - Account Brief - <YYYY-MM-DD>`**, e.g. `Humana - Account Brief - 2026-10-05`. Create it in My Drive with `create_file` and `contentMimeType: application/vnd.google-apps.folder`.

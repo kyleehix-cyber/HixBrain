@@ -64,6 +64,8 @@ a { color: #0b63c5; text-decoration: none; word-break: break-all; }
 .badge.hyp { background: #efe6ff; color: #5b2bb5; }
 .badge.stale { background: #fff1d6; color: #8a5a00; }
 .heat { font-weight: 700; color: #b4361e; }
+h2:last-of-type ~ ol { font-size: 7.6pt; line-height: 1.3; }  /* Sources */
+h2:last-of-type ~ ol li { margin: 0; }
 .doc { break-before: page; }
 .doc:first-of-type { break-before: auto; }
 .checkbox { font-family: "DejaVu Sans", sans-serif; }
@@ -157,6 +159,13 @@ def build_gdoc_html(paths, internal=False):
     return '<html><head><meta charset="utf-8"></head><body>' + "".join(parts) + "</body></html>"
 
 
+def count_pages(pdf_path):
+    """Page count without a PDF library (Chromium writes plain /Type /Page objects)."""
+    with open(pdf_path, "rb") as f:
+        data = f.read()
+    return len(re.findall(rb"/Type\s*/Page(?![a-zA-Z])", data))
+
+
 def render(paths, out, title, internal=False):
     doc = build_html(paths, title, internal)
     with tempfile.TemporaryDirectory() as tmp:
@@ -175,15 +184,22 @@ def main(argv=None):
     p.add_argument("--out", required=True)
     p.add_argument("--title", default="Account Brief")
     p.add_argument("--internal", action="store_true", help="add an INTERNAL / do-not-forward banner")
+    p.add_argument("--max-pages", type=int, default=None,
+                   help="exit with status 3 if the PDF is longer than this (briefs: 5)")
     p.add_argument("--gdoc-html", action="store_true",
                    help="write Google-Docs-friendly HTML (for Drive upload) instead of a PDF")
     a = p.parse_args(argv)
     if a.gdoc_html:
         with open(a.out, "w", encoding="utf-8") as f:
             f.write(build_gdoc_html(a.inputs, a.internal))
-    else:
-        render(a.inputs, a.out, a.title, a.internal)
-    print(a.out)
+        print(a.out)
+        return 0
+    render(a.inputs, a.out, a.title, a.internal)
+    pages = count_pages(a.out)
+    print(f"{a.out} ({pages} pages)")
+    if a.max_pages and pages > a.max_pages:
+        print(f"OVER LIMIT: {pages} pages > {a.max_pages}. Tighten the brief and re-render.", file=sys.stderr)
+        return 3
     return 0
 
 
