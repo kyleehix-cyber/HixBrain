@@ -1,0 +1,92 @@
+# Seller profile — the brief uses this to explain why THIS account should buy
+# what YOU sell. Fill in the TODOs; everything else is a solid default for a
+# Conversational AI / Voice AI platform seller.
+
+seller:
+  name: Kyle Hix
+  company: TODO            # your company name
+  product: Conversational AI and Voice AI platform — AI agents that answer, resolve, and route inbound calls and chats, integrated with the CRM and contact-center stack.
+
+value_props:
+  - Containment / deflection — resolve routine inbound calls end-to-end without a human (status, billing, scheduling, password reset, order changes).
+  - Lower cost to serve — fewer agent minutes per contact; AI-handled calls cost a fraction of a human-handled call.
+  - Shorter hold times and 24/7 coverage — instant answer, no queue, after-hours and spike coverage (storms, outages, open enrollment, holidays).
+  - Better agent experience — warm handoff with full context into Salesforce / ServiceNow; summaries and disposition written back automatically.
+  - Faster time to value than legacy IVR rebuilds — natural-language replaces press-1 menus without ripping out the CCaaS platform.
+
+ideal_customer:
+  inbound_volume: High inbound call volume (rule of thumb: 250+ frontline agents, or 1M+ calls/year)
+  industries:      # strongest fits for inbound voice automation
+    - Healthcare (payers, providers, pharmacy)
+    - Insurance (P&C, life, claims)
+    - Banking, credit unions, lending, collections
+    - Utilities and energy
+    - Telecom and cable
+    - Travel, airlines, hospitality
+    - Retail and e-commerce
+    - Logistics and delivery
+    - Government and public services
+    - Home services, auto, property management
+  public_or_private: both
+
+buyer_personas:
+  - title: Chief Experience Officer / Chief Customer Officer
+    role: economic buyer or executive sponsor
+  - title: CIO
+    role: economic buyer or approver; owns platform and vendor rationalization
+  - title: CTO
+    role: technical approver; owns architecture, security, and build vs. buy
+  - title: Product Manager (digital, CX, or conversational)
+    role: champion; owns the roadmap for self-service and the AI agent
+  - title: Contact Center Manager / VP or Director of Contact Center Operations
+    role: champion and end user; owns KPIs (AHT, FCR, abandonment, CSAT, cost per contact)
+
+integrations:   # the platform must fit with these; their presence is a fit signal
+  crm: [Salesforce Service Cloud, ServiceNow CSM, Microsoft Dynamics 365, Zendesk, Oracle Service Cloud, HubSpot, proprietary/homegrown CRM via API]
+  ccaas: [Genesys Cloud, NICE CXone, Five9, Amazon Connect, Talkdesk, Twilio Flex, Avaya, Cisco]
+
+competitors:    # flag these if they show up in the account
+  - Google CCAI / Dialogflow
+  - Amazon Lex / Amazon Connect AI
+  - Nuance / Microsoft
+  - NICE (Enlighten, Cognigy)
+  - Genesys AI
+  - Five9 IVA
+  - Talkdesk AI
+  - Kore.ai
+  - PolyAI
+  - Parloa
+  - Sierra
+  - Decagon
+  - Replicant
+  - SoundHound / Amelia
+  - Yellow.ai
+  - LivePerson
+  - IBM watsonx Assistant
+  - Uniphore
+  - ASAPP
+  - Ada
+  - In-house build on LLM APIs
+
+case_studies:   # TODO — add your real customer stories; the brief matches these by industry and pain
+  - customer: TODO
+    industry: TODO
+    problem: TODO
+    outcome: TODO   # e.g. "62% of billing calls fully automated, $4.1M saved in year 1"
+
+objections:     # objection -> best response (edit to match your product)
+  "We already have an IVR / our CCaaS vendor has AI": >
+    Keep the CCaaS platform; we work alongside it. The question is containment rate. Ask what percentage of calls
+    their current IVA fully resolves. Most press-1 and first-gen IVAs land well under 20%.
+  "Customers hate talking to bots": >
+    They hate menus and hold queues. Show a live demo and CSAT on AI-handled calls, and design an
+    instant escape-to-human with context passed along.
+  "AI hallucination / compliance risk (HIPAA, PCI, TCPA)": >
+    Guardrailed, grounded responses; PCI-safe payment capture; PHI handling; audit logs; SOC 2 / HIPAA BAA. Bring security in early.
+  "We're building it ourselves on LLM APIs": >
+    Telephony latency, barge-in, turn-taking, CRM write-back, analytics, and ongoing tuning are the hard 80%.
+    Compare total cost of ownership and time to production.
+  "No budget this year": >
+    Frame it as cost takeout: agent minutes saved × cost per minute. Often funded from the operations budget or BPO savings.
+  "Integration with our CRM will be a nightmare": >
+    Pre-built connectors for Salesforce and ServiceNow; REST/webhook layer for proprietary CRMs; start with read-only lookups.

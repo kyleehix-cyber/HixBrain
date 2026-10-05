@@ -161,10 +161,15 @@ tests/
 
 ---
 
-## 9. Open questions for Kyle
+## 9. Decisions (from Kyle, 2026-10-05)
 
-1. **What do you sell, and to whom?** (product, typical buyer title, deal size, industry). This shapes the synthesis prompts and which signals matter most.
-2. **Mostly public companies, private companies, or both?** Public companies get rich EDGAR and earnings-call data. Private companies lean on hiring, news, and enrichment.
-3. **Which CRM, if any?** (Salesforce, HubSpot, none)
-4. **Budget for data vendors?** The MVP is free apart from LLM costs. Accurate people and org-chart data is where paid APIs help most.
-5. **Where do you want briefs to show up?** Terminal, email, phone, or a web page.
+| Question | Answer | Effect on the build |
+|---|---|---|
+| What do you sell? | Conversational AI and Voice AI platform | `seller_profile.yaml` and `playbooks/voice-ai-signals.md` are tuned for inbound-call automation |
+| Buyers | CXO, CIO, CTO, Product Managers, Contact Center managers | A persona playbook and a buying-committee table for each |
+| Targets | Public **and** private companies with high inbound call volume | The fit score weights inbound volume most heavily. EDGAR is used when the company is public; otherwise web search fills in |
+| Integrations | Salesforce, ServiceNow, other CRMs incl. proprietary | Stack detection marks CRM/CCaaS as integration paths, not just incumbents |
+| Paid data | None for now | Free sources only: web search, SEC EDGAR, public ATS boards, company sites |
+| Where briefs go | Claude Code | Built as a Claude Code skill (`/account-brief`). Claude runs the research, so no API key or server is needed. Briefs are saved to `briefs/` |
+
+**Change from §6:** v1 runs entirely inside Claude Code instead of as a standalone Python service that calls the Claude API. The Python package now holds only the free data collectors (`hixbrain/collect.py`). The roadmap is unchanged; phases 3–4 can still move to a scheduled job or a standalone service later.
