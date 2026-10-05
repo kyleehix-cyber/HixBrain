@@ -56,6 +56,22 @@ VENDORS = {
     "Sprinklr": ("conversational_ai", ["sprinklr"]),
     "[24]7.ai": ("conversational_ai", ["247.ai", "247-inc"]),
     "Khoros": ("conversational_ai", ["khoros", "lithium.com"]),
+    # Speech / voice-agent infrastructure (Deepgram and its direct competitors)
+    "Deepgram": ("speech_ai", ["deepgram"]),
+    "AssemblyAI": ("speech_ai", ["assemblyai"]),
+    "ElevenLabs": ("speech_ai", ["elevenlabs"]),
+    "Speechmatics": ("speech_ai", ["speechmatics"]),
+    "Cartesia": ("speech_ai", ["cartesia"]),
+    "Rev.ai": ("speech_ai", ["rev.ai"]),
+    "Soniox": ("speech_ai", ["soniox"]),
+    "Gladia": ("speech_ai", ["gladia"]),
+    "AWS Transcribe": ("speech_ai", ["amazon transcribe", "aws transcribe"]),
+    "Azure Speech": ("speech_ai", ["azure speech", "azure cognitive services speech", "cognitiveservices"]),
+    "Google Speech-to-Text": ("speech_ai", ["google speech-to-text", "cloud speech-to-text", "google stt"]),
+    "OpenAI Whisper / Realtime": ("speech_ai", ["whisper", "openai realtime", "realtime api"]),
+    "Vapi": ("conversational_ai", ["vapi.ai", "vapi"]),
+    "Retell AI": ("conversational_ai", ["retellai", "retell ai"]),
+    "Bland AI": ("conversational_ai", ["bland.ai", "bland ai"]),
     # Voice of customer / analytics
     "Qualtrics": ("voc", ["qualtrics"]),
     "Medallia": ("voc", ["medallia", "kampyle"]),
@@ -70,7 +86,7 @@ VENDORS = {
 
 # Short or ambiguous tokens that need word boundaries to avoid false hits
 # ("8x8" in a CSS grid, "ttec" inside other words, "ada" etc.).
-_WORD_BOUNDARY = {"8x8", "ttec", "ccai", "d365", "asapp", "sitel", "replicant", "nuance", "decagon", "parloa", "verint", "avaya"}
+_WORD_BOUNDARY = {"vapi", "whisper", "cartesia", "gladia", "8x8", "ttec", "ccai", "d365", "asapp", "sitel", "replicant", "nuance", "decagon", "parloa", "verint", "avaya"}
 
 
 def _contains(text_lower, needle):
@@ -92,7 +108,7 @@ def detect_vendors(text):
 
 # Job-title buckets. Order matters: first matching bucket wins.
 JOB_BUCKETS = [
-    ("conversational_ai", r"conversational|virtual agent|\bivr\b|\bivas?\b|voice (ai|bot|assistant|experience)|chatbot|\bnlu\b|\bnlp\b|dialog(ue)? design|speech"),
+    ("conversational_ai", r"conversational|virtual agent|voice agent|speech recognition|\basr\b|text.to.speech|\btts\b|\bivr\b|\bivas?\b|voice (ai|bot|assistant|experience)|chatbot|\bnlu\b|\bnlp\b|dialog(ue)? design|speech"),
     ("cx_leadership", r"(chief|vp|vice president|head|director|sr\.? director).{0,40}(customer|experience|\bcx\b|contact cent|call cent|care|service operations|member services|patient access)"),
     ("contact_center_ops", r"workforce management|\bwfm\b|contact cent(er|re).{0,30}(manager|supervisor|analyst|lead|engineer|architect)|call cent(er|re).{0,30}(manager|supervisor|analyst|lead)|quality assurance.{0,20}(analyst|specialist)|telephony|genesys|five9|amazon connect|nice cxone|\bcti\b"),
     ("crm_platform", r"salesforce|servicenow|service now|dynamics 365|zendesk|\bcrm\b"),

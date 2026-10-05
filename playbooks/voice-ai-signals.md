@@ -1,4 +1,4 @@
-# Voice AI Sales Signals & Persona Playbook
+# Voice AI Sales Signals & Persona Playbook (Deepgram)
 
 Reference for the `/account-brief` workflow. It covers what to look for, what each finding means for a Conversational / Voice AI deal, and how to talk to each buyer.
 
@@ -21,16 +21,23 @@ Reference for the `/account-brief` workflow. It covers what to look for, what ea
 | M&A (systems and contact centers to consolidate) | 8-K, news | Integration chaos; unify the front door with AI | 🔥🔥 |
 | Already announced an AI assistant / chatbot | News, website | Expansion or displacement. Find what it doesn't cover (usually voice, or complex intents) | 🔥 (qualify) |
 | Regulated (HIPAA, PCI, TCPA, state insurance rules) | Industry | Lead with security and compliance; expect a longer cycle | info |
+| **Deepgram partner platform in use** (Five9, Amazon Connect, Twilio, Genesys, Vonage, AudioCodes, Cognigy, Kore.ai, OneReach, Replicant) | Job posts, case studies, press, website scripts | **Partner route.** Upgrade the speech layer inside the platform they already own, and bring in the partner's account team for co-selling | 🔥🔥🔥 |
+| Building voice features in-house (hiring voice / ASR / "voice agent" engineers, LLM platform team, Twilio developers) | Job boards, engineering blog, GitHub | **Ideal Voice Agent API buyer.** They need a real-time speech layer. "Build" is the opening, not a lost deal | 🔥🔥🔥 |
+| Hyperscaler speech in use (Google STT/CCAI, AWS Transcribe/Lex, Azure Speech/Nuance) | Press, case studies, job posts | **Displacement.** Offer a bake-off on their own audio: accuracy, latency, cost per hour | 🔥🔥 |
+| Accuracy pain: failed authentication, "didn't understand me", accents, noisy audio (drive-thru, field, mobile), alphanumeric IDs | Reviews, Reddit, IVR complaints | Deepgram's core differentiator. Use the Five9 healthcare authentication story | 🔥🔥🔥 |
+| On-prem or VPC requirement (banks, government, healthcare) | Industry, security pages, RFPs | Deepgram deploys in VPC or on-prem, which many cloud-only competitors can't | 🔥🔥 |
+| QSR / drive-thru / phone ordering | Industry | Proven Deepgram vertical with labor and ticket-size results | 🔥🔥🔥 |
+| Software company with a voice product (CCaaS, conversation intelligence, voice-agent startup) | Website, product pages | **OEM / embed opportunity.** Deepgram becomes their speech engine. Different motion from an enterprise deal | 🔥🔥 |
 
 ## 2. Fit score rubric (0–100)
 
 - **Inbound volume (0–30):** Agent headcount, call-heavy industry, number of support lines.
 - **Pain evidence (0–25):** Public complaints, hold times, attrition, cost pressure in filings.
 - **Timing / triggers (0–20):** New exec, CCaaS migration, an announced AI initiative, BPO renewal, M&A, earnings language.
-- **Stack compatibility (0–15):** Salesforce / ServiceNow / a modern CCaaS scores high. Proprietary CRM is fine (via API) but adds scope.
-- **Access (0–10):** A known contact, a mutual connection, a prior conversation, or a reachable persona.
+- **Stack compatibility (0–15):** A Deepgram **partner** platform (Five9, Amazon Connect, Twilio, Genesys, etc.) or an in-house build team scores highest. Salesforce / ServiceNow add points. Proprietary CRM is fine (via API) but adds scope.
+- **Access (0–10):** A known contact, a mutual connection, a prior conversation, a reachable persona, or a partner account team already in the account.
 
-Subtract 10–20 if a direct competitor was deployed for voice in the last 18 months. Note this as a displacement or a different-use-case play.
+Classify every vendor found using `seller_profile.yaml`: **partners** (positive), **competitors** (displacement), **platforms_could_be_either** (find out which speech engine they use). Subtract 5–15 only for a *direct speech competitor* (Google, AWS Transcribe, Azure/Nuance, OpenAI, ElevenLabs, AssemblyAI, etc.) deployed in the last 18 months. Note it as a displacement or a bake-off play. A partner platform is never a deduction.
 
 Bands: **80+** = pursue now, **60–79** = active prospect, **40–59** = nurture, **<40** = deprioritize.
 
@@ -70,7 +77,23 @@ Bands: **80+** = pursue now, **60–79** = active prospect, **40–59** = nurtur
 - **Ask:** "What % of calls are repetitive (status, billing, password, scheduling)?" / "What's your fully loaded cost per agent hour?" / "What's agent attrition?"
 - **Language:** Talk about "giving agents the hard, interesting calls" and "covering peaks". Do not talk about "replacing headcount".
 
-## 4. ROI back-of-envelope (use in briefs when inputs exist)
+### Engineering lead / ML or voice engineer (technical evaluator)
+- **Cares about:** WER on *their* audio, latency (time to first word, barge-in), alphanumeric accuracy, SDKs, concurrency, deployment (VPC / on-prem), price per hour.
+- **Open with:** "Want to run your hardest calls through Nova and see the transcripts side by side with what you use today?"
+- **Ask:** "What speech engine sits under your IVA or voice agent today?" / "Where does it fail: names, IDs, accents, noise?" / "What's your latency budget?"
+- **Role:** Runs the bake-off. Their benchmark decides the deal, so get them sample audio access early.
+
+## 4. Motions (choose one per account)
+
+| Situation | Motion |
+|---|---|
+| Uses a Deepgram partner (Five9, Amazon Connect, Twilio, Genesys, …) | **Co-sell through the partner.** Turn on or upgrade Deepgram inside their platform |
+| Building their own voice agent | **Direct, developer-led.** Voice Agent API, bring your own LLM, bake-off |
+| On a hyperscaler or another speech vendor | **Displacement.** Bake-off on accuracy, latency, and cost at their volume |
+| End-to-end voice agent vendor (Sierra, PolyAI, Parloa, …) | Find out the vendor's speech engine. If it isn't Deepgram, consider pitching Deepgram to the vendor (OEM) as well as to the account |
+| Software company with a voice product | **OEM / embed** |
+
+## 5. ROI back-of-envelope (use in briefs when inputs exist)
 
 ```
 annual_calls × automatable_share × containment_rate × (human_cost_per_call − ai_cost_per_call)
@@ -87,7 +110,7 @@ Defaults when unknown (always label them as assumptions):
 | Containment rate | 50–70% |
 | Calls per agent per year | ≈ 8,000–12,000 |
 
-## 5. Research queries that work
+## 6. Research queries that work
 
 - `"<company>" contact center OR "call center" OR "customer care" <current year>`
 - `"<company>" Genesys OR "NICE CXone" OR Five9 OR "Amazon Connect" OR Talkdesk OR Avaya`
@@ -99,3 +122,6 @@ Defaults when unknown (always label them as assumptions):
 - `"<company>" Teleperformance OR Concentrix OR TTEC OR Alorica OR Foundever`
 - `"<company>" customer service representative jobs` (headcount and locations)
 - `"<company>" layoffs OR acquisition OR "new CEO" OR funding` (last 90 days)
+- `"<company>" Deepgram` (existing usage, directly or through a partner; check this first)
+- `"<company>" "speech recognition" OR "speech-to-text" OR "voice agent" engineer jobs`
+- `"<company>" Google CCAI OR "Amazon Lex" OR Nuance OR "Azure Speech" OR ElevenLabs OR AssemblyAI`

@@ -170,6 +170,7 @@ tests/
 | Targets | Public **and** private companies with high inbound call volume | The fit score weights inbound volume most heavily. EDGAR is used when the company is public; otherwise web search fills in |
 | Integrations | Salesforce, ServiceNow, other CRMs incl. proprietary | Stack detection marks CRM/CCaaS as integration paths, not just incumbents |
 | Paid data | None for now | Free sources only: web search, SEC EDGAR, public ATS boards, company sites |
+| Company (added later the same day) | **Deepgram** (Nova STT, Aura TTS, Voice Agent API); case studies from deepgram.com/customers | Vendors are classified as **partners** (Five9, Amazon Connect, Twilio, Genesys, Cognigy, Kore.ai, …), **competitors** (Google, AWS, Azure/Nuance, OpenAI, ElevenLabs, AssemblyAI, …), or **either** (end-to-end voice agent vendors). Each brief picks one motion: co-sell, direct developer-led, displacement, or OEM |
 | Where briefs go | Claude Code | Built as a Claude Code skill (`/account-brief`). Claude runs the research, so no API key or server is needed. Briefs are saved to `briefs/` |
 
 **Change from §6:** v1 runs entirely inside Claude Code instead of as a standalone Python service that calls the Claude API. The Python package now holds only the free data collectors (`hixbrain/collect.py`). The roadmap is unchanged; phases 3–4 can still move to a scheduled job or a standalone service later.

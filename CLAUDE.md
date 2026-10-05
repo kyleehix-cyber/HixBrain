@@ -1,6 +1,6 @@
 # HixBrain
 
-Account intelligence for selling a Conversational AI / Voice AI platform. It produces cited sales briefs inside Claude Code.
+Account intelligence for selling **Deepgram** (Voice AI platform: Nova STT, Aura TTS, Voice Agent API). It produces cited sales briefs inside Claude Code.
 
 - **Generate a brief:** `/account-brief <company or domain> [--deep] [--attendees "..."] [--meeting next]`. The workflow lives in `.claude/skills/account-brief/SKILL.md`.
 - **Seller context:** `seller_profile.yaml` (product, personas, integrations, competitors, case studies, objections). Keep it current; briefs are only as specific as this file.

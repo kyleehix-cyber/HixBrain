@@ -8,6 +8,7 @@
 - **Who they are:** one line, including inbound-volume indicator
 - **Why now:** the strongest trigger [n]
 - **#1 pain hypothesis:** …
+- **Motion:** co-sell via <partner> / direct developer-led / displacement / OEM, plus why
 - **Person to win:** name/title and why
 - **Ask this one question:** …
 
@@ -42,6 +43,7 @@ Quotes from 10-K, earnings calls, and exec interviews about CX, cost, AI, and di
 | CRM | | | integration path |
 | CCaaS / telephony | | | |
 | IVR / conversational AI | | | compete / displace / complement |
+| Speech engine (STT/TTS) | | | Deepgram already? partner? competitor? |
 | BPO | | | |
 | VoC / analytics | | | |
 
@@ -56,13 +58,15 @@ Counts and examples by bucket: frontline agents, CX leadership, contact center o
 | CTO | | | | | |
 | Product (digital / CX / conversational) | | | | | |
 | Contact Center leader | | | | | |
+| Engineering / voice tech lead | | | | | |
 
 ## 9. People You're Meeting (if attendees are given)
 For each: background, what they've said publicly, the KPIs they own, a suggested opener, and what they'll care about.
 
 ## 10. Competitive Landscape
 - Their market competitors, and how those competitors use AI in service (peer pressure angle)
-- **Our** competitors present or likely in the account
+- **Deepgram** competitors present or likely in the account
+- **Deepgram partners** present, and the co-sell contact to bring in
 
 ## 11. Pain → Solution Map
 | Observed signal | 🧠 Pain hypothesis | Our value prop | Proof point |

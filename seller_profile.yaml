@@ -1,92 +1,169 @@
-# Seller profile — the brief uses this to explain why THIS account should buy
-# what YOU sell. Fill in the TODOs; everything else is a solid default for a
-# Conversational AI / Voice AI platform seller.
+# Seller profile. The brief uses this to explain why THIS account should buy
+# Deepgram. Case-study figures were gathered from search results about
+# deepgram.com/customers on 2026-10-05; re-check the linked page before
+# quoting a number to a customer.
 
 seller:
   name: Kyle Hix
-  company: TODO            # your company name
-  product: Conversational AI and Voice AI platform — AI agents that answer, resolve, and route inbound calls and chats, integrated with the CRM and contact-center stack.
+  company: Deepgram
+  product: >
+    Deepgram voice AI platform. Nova (speech-to-text), Aura (text-to-speech), and the
+    Voice Agent API (STT + LLM orchestration + TTS in one real-time stack, bring-your-own
+    LLM/TTS supported). Deploys as cloud, VPC, or on-prem. Sold direct to enterprises and
+    their developers, and embedded in CCaaS / conversational AI platforms.
+  customers_page: https://deepgram.com/customers
 
 value_props:
-  - Containment / deflection — resolve routine inbound calls end-to-end without a human (status, billing, scheduling, password reset, order changes).
-  - Lower cost to serve — fewer agent minutes per contact; AI-handled calls cost a fraction of a human-handled call.
-  - Shorter hold times and 24/7 coverage — instant answer, no queue, after-hours and spike coverage (storms, outages, open enrollment, holidays).
-  - Better agent experience — warm handoff with full context into Salesforce / ServiceNow; summaries and disposition written back automatically.
-  - Faster time to value than legacy IVR rebuilds — natural-language replaces press-1 menus without ripping out the CCaaS platform.
+  - Accuracy where it matters for self-service. Names, account numbers, alphanumerics, accents, and noisy audio are where IVAs fail and calls escape to agents.
+  - Real-time latency fast enough for natural voice agents (barge-in, turn-taking), not press-1 IVR.
+  - Lower cost at scale than hyperscaler speech APIs, which matters at millions of calls per year.
+  - One stack for the whole call (voice agent, agent assist, transcription, post-call analytics) instead of separate vendors.
+  - Deploy anywhere. Cloud, VPC, or on-prem for regulated data (HIPAA, PCI, banking), plus custom-trained models for domain vocabulary.
+  - Works with the stack they already own. Powers or integrates with Five9, Amazon Connect, Twilio, Genesys, Cognigy, Kore.ai, and others, with Salesforce / ServiceNow / proprietary CRM through the agent's tool calls.
 
 ideal_customer:
-  inbound_volume: High inbound call volume (rule of thumb: 250+ frontline agents, or 1M+ calls/year)
-  industries:      # strongest fits for inbound voice automation
+  inbound_volume: High inbound call volume (rule of thumb 250+ frontline agents or 1M+ calls/year), OR a product/engineering team building voice features
+  industries:
     - Healthcare (payers, providers, pharmacy)
-    - Insurance (P&C, life, claims)
+    - Insurance
     - Banking, credit unions, lending, collections
+    - Restaurants / QSR drive-thru and phone ordering
     - Utilities and energy
     - Telecom and cable
-    - Travel, airlines, hospitality
+    - Travel and hospitality
     - Retail and e-commerce
-    - Logistics and delivery
-    - Government and public services
-    - Home services, auto, property management
+    - BPOs and answering services
+    - Software companies building voice products (CCaaS, conversation intelligence, voice-agent startups)
   public_or_private: both
 
 buyer_personas:
   - title: Chief Experience Officer / Chief Customer Officer
-    role: economic buyer or executive sponsor
+    role: economic buyer or executive sponsor (containment, CSAT, cost to serve)
   - title: CIO
-    role: economic buyer or approver; owns platform and vendor rationalization
+    role: approver. Vendor strategy, security, data residency, cost vs. hyperscaler speech.
   - title: CTO
-    role: technical approver; owns architecture, security, and build vs. buy
-  - title: Product Manager (digital, CX, or conversational)
-    role: champion; owns the roadmap for self-service and the AI agent
+    role: technical approver and often the economic buyer for build-on-Deepgram. Latency, accuracy, deployment model.
+  - title: Product Manager (digital, CX, conversational, or voice product)
+    role: champion. Owns the voice agent / IVA roadmap and the intents to automate.
   - title: Contact Center Manager / VP or Director of Contact Center Operations
-    role: champion and end user; owns KPIs (AHT, FCR, abandonment, CSAT, cost per contact)
+    role: champion and end user. Containment, AHT, authentication rate, QA coverage.
+  - title: Engineering lead / ML or voice engineer
+    role: technical evaluator who runs the benchmark. Win them with a bake-off on THEIR audio.
 
-integrations:   # the platform must fit with these; their presence is a fit signal
-  crm: [Salesforce Service Cloud, ServiceNow CSM, Microsoft Dynamics 365, Zendesk, Oracle Service Cloud, HubSpot, proprietary/homegrown CRM via API]
-  ccaas: [Genesys Cloud, NICE CXone, Five9, Amazon Connect, Talkdesk, Twilio Flex, Avaya, Cisco]
-
-competitors:    # flag these if they show up in the account
-  - Google CCAI / Dialogflow
-  - Amazon Lex / Amazon Connect AI
-  - Nuance / Microsoft
-  - NICE (Enlighten, Cognigy)
-  - Genesys AI
-  - Five9 IVA
-  - Talkdesk AI
+# How to treat vendors found in the account. This matters: many contact-center
+# platforms are Deepgram PARTNERS, not competitors.
+partners:       # their presence is a positive. Route via the partner, or upgrade the speech layer inside it.
+  - Five9 (Deepgram powers STT in Five9 IVA Studio)
+  - Amazon Connect / AWS (Deepgram is a speech provider in Connect contact flows)
+  - Twilio (Media Streams + Deepgram voice agents)
+  - Genesys
+  - Vonage
+  - AudioCodes
+  - Cognigy
   - Kore.ai
-  - PolyAI
-  - Parloa
+  - OneReach.ai
+  - Replicant
+  - Daily
+
+competitors:    # direct speech / voice-agent infrastructure competitors
+  - Google Cloud Speech-to-Text / CCAI / Gemini Live
+  - AWS Transcribe / Polly (when used natively instead of Deepgram in Connect)
+  - Microsoft Azure Speech / Nuance
+  - OpenAI (Whisper, gpt-4o-transcribe, Realtime API)
+  - ElevenLabs
+  - AssemblyAI
+  - Speechmatics
+  - Cartesia
+  - Rev.ai
+  - Soniox
+  - Gladia
+  - IBM watsonx Speech
+
+platforms_could_be_either:   # end-to-end voice agent vendors. Find out which speech engine they use. Could be a channel or a displacement.
   - Sierra
   - Decagon
-  - Replicant
+  - PolyAI
+  - Parloa
+  - Vapi
+  - Retell AI
+  - Bland
   - SoundHound / Amelia
   - Yellow.ai
   - LivePerson
-  - IBM watsonx Assistant
+  - NICE CXone / Enlighten
+  - Talkdesk AI
   - Uniphore
+  - Observe.AI
   - ASAPP
-  - Ada
-  - In-house build on LLM APIs
+  - In-house build on LLM APIs (this is a Deepgram OPPORTUNITY: they need the speech layer)
 
-case_studies:   # TODO — add your real customer stories; the brief matches these by industry and pain
-  - customer: TODO
-    industry: TODO
-    problem: TODO
-    outcome: TODO   # e.g. "62% of billing calls fully automated, $4.1M saved in year 1"
+integrations:
+  crm: [Salesforce Service Cloud, ServiceNow CSM, Microsoft Dynamics 365, Zendesk, Oracle Service Cloud, HubSpot, proprietary/homegrown CRM via API / function calling]
+  ccaas: [Five9, Amazon Connect, Twilio, Genesys Cloud, Vonage, NICE CXone, Talkdesk, Avaya, Cisco]
 
-objections:     # objection -> best response (edit to match your product)
+case_studies:   # source: https://deepgram.com/customers. Match on industry or pain.
+  - customer: Five9 (major healthcare provider deployment)
+    industry: Healthcare / CCaaS
+    problem: IVA failed to capture alphanumeric IDs, so callers couldn't authenticate and escaped to agents
+    outcome: Healthcare provider doubled user authentication rates after switching to Deepgram in Five9 IVA Studio. Deepgram was 2–4x more accurate on alphanumeric inputs than alternatives.
+    url: https://deepgram.com/customers/five9
+  - customer: Abby Connect
+    industry: Answering service / virtual receptionist
+    problem: Scaling high-touch call handling and QA
+    outcome: Launched an AI receptionist. 5x QA productivity, 30% less audit time, 100,000+ calls/month.
+    url: https://deepgram.com/learn/case-study/abby-connect
+  - customer: Red Box
+    industry: Financial services call recording (trusted by six of the world's top banks)
+    problem: Transcript accuracy for compliance and analytics
+    outcome: Transcript accuracy above 90%.
+    url: https://offers.deepgram.com/hubfs/Red-Box-case-study.pdf
+  - customer: Elerian AI
+    industry: Banking / financial services voice agents
+    problem: On-prem ASR required for security, plus domain accuracy
+    outcome: Above 90% transcription precision with tailored models, deployed on-prem.
+    url: https://deepgram.com/customers/elerian
+  - customer: Two national restaurant chains (fried chicken, pastry)
+    industry: QSR / drive-thru
+    problem: Labor cost and speed of service
+    outcome: 4–6 hours of labor saved per store per day, 10% lift in average ticket, 25% faster speed of service.
+    url: https://deepgram.com/learn/voice-ai-saves-margin-doomspiral-in-qsr
+  - customer: CallTrackingMetrics
+    industry: Call tracking / conversation analytics
+    problem: Call transcription accuracy for analytics and agent coaching
+    outcome: Above 90% accuracy, better conversation analytics and agent training.
+    url: https://cdn.featuredcustomers.com/CustomerCaseStudy.document/deepgram_calltrackingmetrics_914483.pdf
+  - customer: Sharpen
+    industry: CCaaS
+    problem: Transcription quality on real contact-center audio
+    outcome: Significant quality improvement with a model trained on their own calls.
+    url: https://deepgram.com/customers/sharpen
+  - customer: Wistia
+    industry: Video / media
+    problem: Caption accuracy, speed, cost
+    outcome: 30% lower word error rate than competitors, up to 40x faster inference, 3–5x lower cost.
+    url: https://deepgram.com/customers/wistia
+  - customer: NASA
+    industry: Government / aerospace
+    problem: Noisy space-to-ground communications
+    outcome: Transcripts up to 89.6% accurate on space-to-ground audio.
+    url: https://deepgram.com/customers/nasa
+
+objections:
   "We already have an IVR / our CCaaS vendor has AI": >
-    Keep the CCaaS platform; we work alongside it. The question is containment rate. Ask what percentage of calls
-    their current IVA fully resolves. Most press-1 and first-gen IVAs land well under 20%.
-  "Customers hate talking to bots": >
-    They hate menus and hold queues. Show a live demo and CSAT on AI-handled calls, and design an
-    instant escape-to-human with context passed along.
-  "AI hallucination / compliance risk (HIPAA, PCI, TCPA)": >
-    Guardrailed, grounded responses; PCI-safe payment capture; PHI handling; audit logs; SOC 2 / HIPAA BAA. Bring security in early.
+    Good. Five9, Amazon Connect, Twilio, and Genesys work with Deepgram, so this can be an upgrade of the speech
+    layer inside the platform they own, not a rip-and-replace. Ask what their IVA's authentication and containment
+    rates are today. Speech errors on names, IDs, and accents are the usual reason calls escape to agents.
+  "We're standardized on Google / Microsoft / AWS speech": >
+    Offer a bake-off on their own call recordings: accuracy on their vocabulary and alphanumerics, latency, and cost
+    per hour at their volume. Deepgram can run in their VPC, so data never leaves their cloud.
   "We're building it ourselves on LLM APIs": >
-    Telephony latency, barge-in, turn-taking, CRM write-back, analytics, and ongoing tuning are the hard 80%.
-    Compare total cost of ownership and time to production.
+    Great. That's exactly who the Voice Agent API is for. Bring your own LLM and keep control of the logic. Deepgram
+    handles the hard real-time speech layer (latency, barge-in, accuracy, TTS).
+  "Customers hate talking to bots": >
+    They hate being misunderstood. Accurate, low-latency speech is what makes a voice agent feel natural. Design an
+    instant escape to a human with context passed along.
+  "Compliance / data residency (HIPAA, PCI, banking)": >
+    VPC and on-prem deployment, so audio stays in their environment. Elerian AI is a banking on-prem reference.
   "No budget this year": >
-    Frame it as cost takeout: agent minutes saved × cost per minute. Often funded from the operations budget or BPO savings.
-  "Integration with our CRM will be a nightmare": >
-    Pre-built connectors for Salesforce and ServiceNow; REST/webhook layer for proprietary CRMs; start with read-only lookups.
+    Frame it as cost takeout: agent minutes saved, or speech-API spend saved vs. a hyperscaler at their volume. It often
+    lands in an existing CCaaS or platform budget line when bought through a partner.

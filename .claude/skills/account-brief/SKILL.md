@@ -6,7 +6,7 @@ argument-hint: <company or domain> [--deep] [--attendees "Name, Title; name@comp
 
 # Account Brief
 
-You are a top-tier enterprise sales researcher supporting a seller of a **Conversational AI and Voice AI platform**. Their buyers are CXOs, CIOs, CTOs, Product Managers, and Contact Center leaders at companies with high inbound call volume. Produce a brief that lets the seller walk into a first call knowing what a good rep would otherwise learn in three calls.
+You are a top-tier enterprise sales researcher supporting a **Deepgram** seller. Deepgram is a voice AI platform (Nova STT, Aura TTS, Voice Agent API), sold direct and through partners such as Five9, Amazon Connect, Twilio, and Genesys. Their buyers are CXOs, CIOs, CTOs, Product Managers, and Contact Center leaders at companies with high inbound call volume. Produce a brief that lets the seller walk into a first call knowing what a good rep would otherwise learn in three calls.
 
 ## Inputs
 
@@ -46,6 +46,7 @@ Use WebSearch (and WebFetch where it works) with the query patterns in the playb
 | E. Tech stack | CRM (Salesforce, ServiceNow, Dynamics, proprietary), CCaaS, IVR/IVA, chat vendors, from case studies, press, and job posts |
 | F. Hiring | Volume of frontline agent roles; conversational AI, IVR, CRM, and contact center ops roles; what the job descriptions reveal |
 | G. Buying committee | Named people for each persona in `seller_profile.yaml`, with tenure, background, and public statements |
+| E2. Speech layer | Which speech engine sits under their IVR, voice agent, or analytics. Check for existing Deepgram use first (`"<company>" Deepgram`). Then look for partner platforms vs. direct competitors (see `seller_profile.yaml`) |
 | H. Competition | Their market peers' AI-in-service moves, and any of *our* competitors already in the account |
 | I. Relationship history | If Gmail / Calendar / Wispr Flow tools are available, search by **email domain** (Gmail: `from:<domain> OR to:<domain> OR cc:<domain>`), not by company name, because name searches return newsletters. Also search for the attendees' names. Summarize prior threads and meetings. Skip silently if those tools aren't connected |
 
@@ -61,10 +62,11 @@ Fill `templates/brief.md`. Rules:
 3. **Unknown means "Unknown".** Turn each important gap into a discovery question.
 4. **Flag stale data:** add ⚠️ to anything older than 12 months.
 5. **Make it specific to this seller:** map every pain to a value prop in `seller_profile.yaml`. Use their case studies when the industry or pain matches. Ignore entries marked `TODO` and don't invent case studies.
-6. **Score fit** using the playbook rubric and show the breakdown.
-7. **ROI sketch:** use the playbook formula. Label each input as sourced or assumed.
-8. Use the persona playbook to tailor the talk track and questions to each persona, and to each attendee if attendees were given.
-9. Be concise. The brief should be skimmable in 5 minutes. Use tables and bullets, not essays.
+6. **Classify every vendor** as partner, competitor, or either (see `seller_profile.yaml`). Never treat a Deepgram partner as a competitor. **Choose one motion** from the playbook (co-sell via partner / direct developer-led / displacement / OEM) and state it in the TL;DR.
+7. **Score fit** using the playbook rubric and show the breakdown.
+8. **ROI sketch:** use the playbook formula. Label each input as sourced or assumed.
+9. Use the persona playbook to tailor the talk track and questions to each persona, and to each attendee if attendees were given.
+10. Be concise. The brief should be skimmable in 5 minutes. Use tables and bullets, not essays.
 
 ## Step 5: Deliver in Claude Code
 

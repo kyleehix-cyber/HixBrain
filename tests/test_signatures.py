@@ -17,6 +17,12 @@ class DetectVendorsTest(unittest.TestCase):
         self.assertIn("8x8", sig.detect_vendors("We run 8x8 for phones"))
         self.assertNotIn("TTEC", sig.detect_vendors("attecting"))
 
+    def test_detects_speech_ai_vendors(self):
+        hits = sig.detect_vendors("Experience with Deepgram, AssemblyAI or Whisper; Vapi a plus")
+        for v in ("Deepgram", "AssemblyAI", "OpenAI Whisper / Realtime", "Vapi"):
+            self.assertIn(v, hits)
+        self.assertNotIn("Vapi", sig.detect_vendors("evaporation"))
+
     def test_no_false_positive_on_plain_text(self):
         self.assertEqual(sig.detect_vendors("We sell shoes online."), {})
 
@@ -32,6 +38,8 @@ class ClassifyTitleTest(unittest.TestCase):
             "Genesys Cloud Engineer": "contact_center_ops",
             "Conversational AI Designer": "conversational_ai",
             "IVR Developer": "conversational_ai",
+            "Senior Engineer, Voice Agents": "conversational_ai",
+            "ASR Research Scientist": "conversational_ai",
             "Salesforce Service Cloud Administrator": "crm_platform",
             "Senior Machine Learning Engineer": "ai_data",
             "Accountant": None,
