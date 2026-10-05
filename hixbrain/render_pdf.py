@@ -87,7 +87,26 @@ def find_chrome():
     sys.exit("No Chrome/Chromium found. Set HIXBRAIN_CHROME to the browser binary.")
 
 
+def normalize_lists(text):
+    """Make GitHub-style lists parse under Python-Markdown: 2-space nested
+    bullets -> 4 spaces, and a blank line before a list that directly follows
+    a paragraph line."""
+    out, prev = [], ""
+    for line in text.splitlines():
+        m = re.match(r"^( {2,3})([-*+]|\d+\.) ", line)
+        if m:
+            line = "    " + line[len(m.group(1)):]
+        is_item = re.match(r"^([-*+]|\d+\.) ", line)
+        prev_is_item = re.match(r"^\s*([-*+]|\d+\.) ", prev)
+        if is_item and prev.strip() and not prev_is_item and not prev.startswith(("|", ">", "#")):
+            out.append("")
+        out.append(line)
+        prev = line
+    return "\n".join(out)
+
+
 def md_to_html(text):
+    text = normalize_lists(text)
     for emoji, repl in BADGES:
         text = text.replace(emoji, repl)
     text = text.replace("☐", '<span class="checkbox">☐</span>')
@@ -109,6 +128,35 @@ def build_html(paths, title, internal):
             f"<style>{CSS}</style></head><body>{banner}{''.join(docs)}</body></html>")
 
 
+# Google Docs' HTML import ignores most <style> rules, so this variant uses
+# inline styles and text-only markers (emoji outside the BMP get mangled).
+GDOC_BADGES = [
+    ('<span class="badge hyp">Hypothesis</span>', '<b style="color:#5b2bb5">[Hypothesis]</b>'),
+    ('<span class="badge stale">Stale</span>', '<b style="color:#8a5a00">[Stale]</b>'),
+    ('<span class="heat">', '<span style="color:#b4361e;font-weight:bold">'),
+    ('<span class="checkbox">☐</span>', "☐"),
+]
+
+
+def build_gdoc_html(paths, internal=False):
+    parts = []
+    if internal:
+        parts.append('<p style="background:#13151a;color:#13ef93;font-weight:bold;padding:6px">'
+                     "INTERNAL — DEEPGRAM ONLY · Do not forward to the customer</p>")
+    for i, p in enumerate(paths):
+        with open(p, encoding="utf-8") as f:
+            body = md_to_html(f.read())
+        for a, b in GDOC_BADGES:
+            body = body.replace(a, b)
+        # Key-value tables ("| | |") have an empty header row; Docs would show it.
+        body = re.sub(r"<thead>\s*<tr>\s*(<th></th>\s*)+</tr>\s*</thead>\s*", "", body)
+        body = body.replace("<table>", '<table border="1" cellpadding="4" style="border-collapse:collapse">')
+        if i:
+            body = '<hr style="page-break-before:always">' + body
+        parts.append(body)
+    return '<html><head><meta charset="utf-8"></head><body>' + "".join(parts) + "</body></html>"
+
+
 def render(paths, out, title, internal=False):
     doc = build_html(paths, title, internal)
     with tempfile.TemporaryDirectory() as tmp:
@@ -127,8 +175,14 @@ def main(argv=None):
     p.add_argument("--out", required=True)
     p.add_argument("--title", default="Account Brief")
     p.add_argument("--internal", action="store_true", help="add an INTERNAL / do-not-forward banner")
+    p.add_argument("--gdoc-html", action="store_true",
+                   help="write Google-Docs-friendly HTML (for Drive upload) instead of a PDF")
     a = p.parse_args(argv)
-    render(a.inputs, a.out, a.title, a.internal)
+    if a.gdoc_html:
+        with open(a.out, "w", encoding="utf-8") as f:
+            f.write(build_gdoc_html(a.inputs, a.internal))
+    else:
+        render(a.inputs, a.out, a.title, a.internal)
     print(a.out)
     return 0
 

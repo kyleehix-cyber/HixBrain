@@ -69,7 +69,7 @@ For each: background, what they've said publicly, the KPIs they own, a suggested
 - **Deepgram partners** present, and the co-sell contact to bring in
 
 ## 11. Pain → Solution Map
-| Observed signal | 🧠 Pain hypothesis | Our value prop | Proof point |
+| Observed signal | Pain hypothesis (inferred) | Our value prop | Proof point |
 |---|---|---|---|
 
 ## 12. ROI Sketch

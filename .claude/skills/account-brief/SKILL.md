@@ -72,10 +72,18 @@ Fill `templates/brief.md`. Rules:
 
 1. Write the brief to `briefs/<company-slug>-<YYYY-MM-DD>.md`.
 2. In chat, show the **TL;DR**, the **fit score**, the **top 3 discovery questions**, and the **next best action**, then the file path. Don't paste the whole brief into chat.
-3. **PDF / internal pre-meeting prep (when asked):** write `briefs/<slug>-<date>-internal-prep.md` (one page: the account in 60 seconds, decisions needed with a recommendation for each, a who-does-what table with blank owners, unknowns and how to find them, risks with counters, a proposed customer-meeting agenda, and asks of the team). Then render:
+3. **Google Drive folder (every brief).** If the Google Drive tools are available, do this automatically. If they aren't, say so in one line and skip it.
+   - Folder title: **`<Account Name> - Account Brief - <YYYY-MM-DD>`**, e.g. `Humana - Account Brief - 2026-10-05`. Create it in My Drive with `create_file` and `contentMimeType: application/vnd.google-apps.folder`.
+   - Search first (`title = '<folder title>' and mimeType = 'application/vnd.google-apps.folder'`). If it already exists (for example, a same-day rerun), reuse it rather than creating a duplicate.
+   - Add the brief as a Google Doc titled `<Account Name> - Deepgram Account Brief - <YYYY-MM-DD>`. Generate Docs-friendly HTML with
+     `python3 -m hixbrain.render_pdf briefs/<slug>-<date>.md --gdoc-html --out <scratchpad>/brief.html`
+     and upload that HTML with `create_file` (`contentMimeType: text/html`, `parentId` = the folder). Don't upload raw Markdown: Drive's Markdown import garbles emoji and formatting inside tables.
+   - If an internal prep page exists, add it the same way (with `--internal`) as `<Account Name> - Internal Pre-Meeting Prep - <YYYY-MM-DD>`.
+   - Verify with `read_file_content`, then give the user the folder link. PDFs are too large to send through the Drive connector, so tell the user to drag the PDF from `briefs/` into the folder.
+4. **PDF / internal pre-meeting prep (when asked):** write `briefs/<slug>-<date>-internal-prep.md` (one page: the account in 60 seconds, decisions needed with a recommendation for each, a who-does-what table with blank owners, unknowns and how to find them, risks with counters, a proposed customer-meeting agenda, and asks of the team). Then render:
    `python3 -m hixbrain.render_pdf briefs/<slug>-<date>-internal-prep.md briefs/<slug>-<date>.md --out briefs/<slug>-<date>-internal-prep.pdf --title "<Company> · Internal Pre-Meeting Prep · <date>" --internal`
    (`pip install markdown` if needed.) Rasterize a page or two with `pdftoppm` to check the layout, then send the PDF to the user.
-4. Offer: a deep dive on any section, an outreach email for a persona, or a refresh on the day of the meeting.
+5. Offer: a deep dive on any section, an outreach email for a persona, or a refresh on the day of the meeting.
 
 ## Guardrails
 

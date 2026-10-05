@@ -8,5 +8,6 @@ Account intelligence for selling **Deepgram** (Voice AI platform: Nova STT, Aura
 - **Output template:** `templates/brief.md` → briefs are written to `briefs/`
 - **Free collectors (Python 3.9+, stdlib only, no API keys):** `python3 -m hixbrain.collect <domain> --name "..." [--ticker X]`. Set `HIXBRAIN_SEC_USER_AGENT="Name email"` for SEC EDGAR.
 - **PDF (customer-safe or `--internal` prep):** `python3 -m hixbrain.render_pdf <md files...> --out x.pdf --title "..." [--internal]`. Needs `pip install markdown` and Chrome/Chromium (`HIXBRAIN_CHROME` to override).
+- **Google Drive:** every brief gets a Drive folder `<Account> - Account Brief - <YYYY-MM-DD>` containing the brief (and any internal prep) as Google Docs, uploaded as HTML from `render_pdf --gdoc-html`.
 - **Tests:** `python3 -m unittest`
 - **Design:** `DESIGN.md`
