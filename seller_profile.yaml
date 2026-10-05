@@ -13,6 +13,24 @@ seller:
     their developers, and embedded in CCaaS / conversational AI platforms.
   customers_page: https://deepgram.com/customers
 
+# Company facts for customer-facing slides (deck slide 5). The brief workflow
+# refreshes these when as_of is more than 90 days old.
+deepgram_facts:
+  as_of: 2026-10-05
+  positioning: The voice AI platform enterprises build on — speech-to-text, text-to-speech, and real-time voice agents.
+  stats:
+    - {fact: "200,000+ developers", source: "https://deepgram.com/learn/deepgram-accelerates-into-2025"}
+    - {fact: "1,400+ organizations, 400+ enterprise customers", source: "https://deepgram.com/learn/deepgram-accelerates-into-2025"}
+    - {fact: "50,000+ years of audio processed; 1 trillion+ words transcribed", source: "https://deepgram.com/learn/deepgram-accelerates-into-2025"}
+    - {fact: "$130M Series C at a $1.3B valuation (Jan 2026)", source: "https://deepgram.com/learn/press-release-deepgram-raises-series-c"}
+  products:
+    - "Nova: speech-to-text, accurate on names, numbers, and noisy audio"
+    - "Aura: natural, low-latency text-to-speech"
+    - "Voice Agent API: STT + LLM + TTS in one real-time stack; bring your own LLM"
+  trust: "SOC 2 Type II · HIPAA (BAA available) · PCI DSS · GDPR · cloud, VPC, or self-hosted / air-gapped"
+  trust_source: "https://deepgram.com/data-security"
+  partners_page: "https://deepgram.com/partners"
+
 value_props:
   - Accuracy where it matters for self-service. Names, account numbers, alphanumerics, accents, and noisy audio are where IVAs fail and calls escape to agents.
   - Real-time latency fast enough for natural voice agents (barge-in, turn-taking), not press-1 IVR.
